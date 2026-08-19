@@ -6,19 +6,19 @@
 <title>Desafio 60 Dias — Vira-Chave</title>
 <style>
   :root{
-    --roxo-950:#180B2E;
-    --roxo-900:#241246;
-    --roxo-800:#331A63;
-    --roxo-700:#4A2189;
-    --roxo-500:#7C3AED;
-    --roxo-300:#C4B5FD;
-    --lav-100:#F1ECFF;
-    --dourado:#F4B740;
-    --dourado-dark:#D89A1F;
-    --texto:#EDE7FB;
-    --texto-fraco:#B9AEDD;
-    --serif:'Fraunces', Georgia, serif;
-    --sans:'Inter', -apple-system, system-ui, sans-serif;
+    --roxo-950:#0C1626;
+    --roxo-900:#101C33;
+    --roxo-800:#1B2E52;
+    --roxo-700:#24365A;
+    --roxo-500:#2C3B57;
+    --roxo-300:#8B95AC;
+    --lav-100:#F7F5F0;
+    --dourado:#C9A24B;
+    --dourado-dark:#A5813A;
+    --texto:#F5F1E6;
+    --texto-fraco:#AEB4C2;
+    --serif:'Georgia', 'Times New Roman', serif;
+    --sans:'Helvetica', Arial, sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -45,16 +45,70 @@
     text-transform:uppercase;
   }
 
+  /* Navbar institucional */
+  .navbar{
+    background:var(--roxo-950);
+    border-bottom:1px solid rgba(139,149,172,.15);
+    padding:16px 0;
+  }
+  .navbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .navbar .marca{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.02em;
+    color:var(--texto);
+  }
+  .navbar .selo-mini{
+    width:26px; height:26px;
+    border:1.5px solid var(--dourado);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--dourado);
+    font-size:12px;
+    flex:0 0 auto;
+  }
+  .navbar nav{
+    display:flex;
+    gap:26px;
+  }
+  .navbar nav a{
+    font-size:13px;
+    color:var(--texto-fraco);
+    letter-spacing:.03em;
+    margin-left:26px;
+  }
+  .navbar nav a:first-child{ margin-left:0; }
+  @media (max-width:640px){ .navbar nav{display:none;} }
+
   /* Hero */
   .hero{
     position:relative;
     padding:64px 0 56px;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% -10%, rgba(124,58,237,.45), transparent),
-      radial-gradient(ellipse 50% 40% at 10% 110%, rgba(244,183,64,.12), transparent),
-      var(--roxo-950);
+    background:var(--roxo-950);
     text-align:center;
+    overflow:hidden;
   }
+  .hero-svg{
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    z-index:0;
+  }
+  .hero .wrap{ position:relative; z-index:1; }
+  .hero .wrap > *{
+    animation:fadeUp .8s ease both;
+  }
+  .hero .eyebrow{ animation-delay:.05s; }
+  .hero h1{ animation-delay:.15s; }
+  .hero p.sub{ animation-delay:.25s; }
+  .hero .btn-cta{ animation-delay:.35s; }
+  .hero-img{ animation-delay:.45s; }
   .eyebrow{
     display:inline-block;
     font-family:var(--serif);
@@ -140,7 +194,7 @@
   }
   .esfera{
     background:linear-gradient(160deg, var(--roxo-800), var(--roxo-900));
-    border:1px solid rgba(196,181,253,.15);
+    border:1px solid rgba(139,149,172,.15);
     border-radius:18px;
     padding:26px 18px;
     text-align:center;
@@ -176,7 +230,7 @@
     gap:14px;
     align-items:flex-start;
     padding:14px 0;
-    border-bottom:1px solid rgba(196,181,253,.12);
+    border-bottom:1px solid rgba(139,149,172,.12);
     font-size:16px;
   }
   .lista-perfil li:last-child{border-bottom:none;}
@@ -198,7 +252,7 @@
     gap:22px;
     align-items:center;
     background:linear-gradient(160deg, var(--roxo-800), var(--roxo-900));
-    border:1px solid rgba(196,181,253,.15);
+    border:1px solid rgba(139,149,172,.15);
     border-radius:20px;
     padding:22px;
     margin-bottom:20px;
@@ -227,7 +281,7 @@
   /* Oferta / preço */
   #oferta{
     background:
-      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(124,58,237,.35), transparent),
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(27,46,82,.7), transparent),
       var(--roxo-950);
     text-align:center;
   }
@@ -276,7 +330,7 @@
     max-width:680px;
     margin:0 auto;
     background:var(--roxo-900);
-    border:1px solid rgba(196,181,253,.15);
+    border:1px solid rgba(139,149,172,.15);
     border-radius:22px;
     padding:34px;
   }
@@ -297,7 +351,7 @@
 
   /* FAQ */
   .faq-item{
-    border-bottom:1px solid rgba(196,181,253,.15);
+    border-bottom:1px solid rgba(139,149,172,.15);
     max-width:700px;
     margin:0 auto;
   }
@@ -328,11 +382,42 @@
   }
 
   footer{
-    padding:40px 0;
+    padding:56px 0 32px;
     text-align:center;
+    background:var(--roxo-950);
+    border-top:1px solid rgba(139,149,172,.15);
+  }
+  footer .selo-mini{
+    width:44px; height:44px;
+    border:1.5px solid var(--dourado);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--dourado);
+    font-size:18px;
+    margin:0 auto 16px;
+  }
+  footer .marca-footer{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:16px;
+    color:var(--texto);
+    margin-bottom:8px;
+    letter-spacing:.02em;
+  }
+  footer .contato-footer{
+    color:var(--dourado);
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:24px;
+  }
+  footer .copyright{
     color:var(--texto-fraco);
-    font-size:12.5px;
-    border-top:1px solid rgba(196,181,253,.1);
+    font-size:11.5px;
+    letter-spacing:.03em;
+    padding-top:20px;
+    border-top:1px solid rgba(139,149,172,.12);
+    max-width:340px;
+    margin:0 auto;
   }
 
   .cta-center{text-align:center; margin-top:44px;}
@@ -348,7 +433,7 @@
   .print-card{
     border-radius:18px;
     overflow:hidden;
-    border:1px solid rgba(196,181,253,.18);
+    border:1px solid rgba(139,149,172,.18);
     background:var(--roxo-900);
   }
   .print-card img{
@@ -366,7 +451,7 @@
     padding:16px;
     color:var(--texto-fraco);
     font-size:12.5px;
-    border:1px dashed rgba(196,181,253,.35);
+    border:1px dashed rgba(139,149,172,.35);
     border-radius:18px;
   }
   .print-placeholder .ic{font-size:26px;}
@@ -378,32 +463,218 @@
     .preco-final{font-size:46px;}
   }
 
+  /* Animações de entrada ao rolar */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-stagger.in-view > *{
+    animation:fadeUp .6s ease both;
+  }
+  .reveal-stagger.in-view > *:nth-child(1){animation-delay:.05s;}
+  .reveal-stagger.in-view > *:nth-child(2){animation-delay:.12s;}
+  .reveal-stagger.in-view > *:nth-child(3){animation-delay:.19s;}
+  .reveal-stagger.in-view > *:nth-child(4){animation-delay:.26s;}
+  .reveal-stagger.in-view > *:nth-child(5){animation-delay:.33s;}
+  .reveal-stagger.in-view > *:nth-child(6){animation-delay:.40s;}
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* Hover mais vivo nos cards */
+  .esfera, .bonus-card, .print-card{
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .esfera:hover, .bonus-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px -12px rgba(0,0,0,.5);
+  }
+  .print-card:hover{
+    transform:translateY(-3px);
+  }
+
+  /* Brilho discreto pulsando no CTA principal do hero */
+  /* Barra de progresso de leitura no topo */
+  .progresso{
+    position:fixed;
+    top:0; left:0;
+    height:3px;
+    width:0%;
+    background:linear-gradient(90deg, var(--dourado), #E8C878);
+    z-index:999;
+    transition:width .1s linear;
+  }
+
+  /* Fundo do hero com deslocamento lento e contínuo */
+  .hero-svg g{
+    animation:driftLines 22s ease-in-out infinite alternate;
+  }
+  @keyframes driftLines{
+    0%{ transform:translate(0,0); }
+    100%{ transform:translate(-24px, 14px); }
+  }
+  .hero-svg circle{
+    animation:driftGlow 14s ease-in-out infinite alternate;
+    transform-origin:880px 60px;
+  }
+  @keyframes driftGlow{
+    0%{ transform:scale(1) translate(0,0); opacity:1; }
+    100%{ transform:scale(1.12) translate(-30px, 20px); opacity:.75; }
+  }
+
+  /* Faixa de urgência com texto em movimento contínuo */
+  .faixa{
+    overflow:hidden;
+    white-space:nowrap;
+    padding:0;
+    position:relative;
+  }
+  .faixa-track{
+    display:inline-flex;
+    animation:marquee 18s linear infinite;
+    padding:10px 0;
+  }
+  .faixa-track span{
+    padding:0 32px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+  }
+  @keyframes marquee{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+
+  /* Selos com respiração suave */
+  @keyframes respirar{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.08); }
+  }
+  .navbar .selo-mini, footer .selo-mini{
+    animation:respirar 3.2s ease-in-out infinite;
+  }
+
+  /* Brilho passando pelos botões CTA */
+  .btn-cta{
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-cta::after{
+    content:'';
+    position:absolute;
+    top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
+    transform:skewX(-20deg);
+    animation:brilhoBtn 3.5s ease-in-out infinite;
+  }
+  @keyframes brilhoBtn{
+    0%{ left:-60%; }
+    35%{ left:130%; }
+    100%{ left:130%; }
+  }
+
+  /* Números das esferas com leve pulso de destaque */
+  .esfera .num{
+    display:inline-block;
+    animation:pulsoNum 2.6s ease-in-out infinite;
+  }
+  .esfera:nth-child(2) .num{ animation-delay:.15s; }
+  .esfera:nth-child(3) .num{ animation-delay:.3s; }
+  .esfera:nth-child(4) .num{ animation-delay:.45s; }
+  .esfera:nth-child(5) .num{ animation-delay:.6s; }
+  @keyframes pulsoNum{
+    0%,100%{ opacity:1; }
+    50%{ opacity:.5; }
+  }
+
+  /* Preço final com pulso suave pra chamar o olho */
+  .preco-final{
+    animation:pulsoPreco 2.4s ease-in-out infinite;
+  }
+  @keyframes pulsoPreco{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.035); }
+  }
+
+  @keyframes pulseGlow{
+    0%, 100%{ box-shadow:0 12px 30px -8px rgba(201,162,75,.5); }
+    50%{ box-shadow:0 12px 38px -6px rgba(201,162,75,.75); }
+  }
+  .btn-cta-hero{
+    animation:pulseGlow 3s ease-in-out infinite;
+  }
+
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    *{transition:none !important;}
+    *{transition:none !important; animation:none !important;}
+    .reveal{opacity:1 !important; transform:none !important;}
+    .faixa-track{ transform:none !important; }
+    .btn-cta::after{ display:none !important; }
   }
 </style>
+<noscript><style>.reveal{opacity:1 !important; transform:none !important;}</style></noscript>
 </head>
 <body>
 
-<div class="faixa">⏳ Turma fecha em breve — garanta sua vaga no Desafio 60 Dias</div>
+<div class="progresso" id="barraProgresso"></div>
+
+<div class="faixa">
+  <div class="faixa-track">
+    <span>⏳ Turma fecha em breve — garanta sua vaga no Desafio 60 Dias</span>
+    <span>⏳ Turma fecha em breve — garanta sua vaga no Desafio 60 Dias</span>
+  </div>
+</div>
+
+<div class="navbar">
+  <div class="wrap">
+    <div class="marca"><span class="selo-mini">✓</span> DESAFIO 60 DIAS</div>
+    <nav>
+      <a href="#metodo">Método</a>
+      <a href="#provas">Provas</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+  </div>
+</div>
 
 <header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1080 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="heroglow" cx="50%" cy="50%" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1B2E52" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#0C1626" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="1080" height="700" fill="#0C1626"/>
+    <circle cx="880" cy="60" r="360" fill="url(#heroglow)"/>
+    <g stroke="#C9A24B" stroke-width="1" fill="none" opacity="0.14">
+      <path d="M -50 200 Q 260 130, 500 210 T 1130 170"/>
+      <path d="M -50 280 Q 280 200, 520 290 T 1130 250"/>
+      <path d="M -50 360 Q 300 270, 540 370 T 1130 330"/>
+    </g>
+  </svg>
   <div class="wrap">
     <span class="eyebrow">O que muda em 60 dias</span>
     <h1>O plano que reorganiza sua vida <em>antes</em> do ano acabar</h1>
     <p class="sub">Um passo a passo diário, com aulas curtas e ações práticas, para você sair do piloto automático e colocar suas 5 áreas de vida no lugar — em apenas 60 dias.</p>
-    <a href="https://pay.kiwify.com.br/Euv4FIu?afid=ANPM1Vjg" class="btn-cta">Quero começar meu desafio</a>
-    <img class="hero-img" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="Pessoa acompanhando o progresso do desafio pelo celular">
+    <a href="https://pay.kiwify.com.br/Euv4FIu?afid=ANPM1Vjg" class="btn-cta btn-cta-hero">Quero começar meu desafio</a>
+    <img class="hero-img" src="img/app-preview.jpg" alt="Tela do app mostrando o progresso do Desafio 60 Dias">
   </div>
 </header>
 
-<section>
+<section id="metodo">
   <div class="wrap">
     <p class="eyebrow-sec">O método</p>
     <h2>Cresça nas 5 esferas da vida</h2>
     <p class="lead">O desafio não foca só em uma coisa. Ele trabalha as cinco áreas que, juntas, sustentam uma vida que funciona de verdade.</p>
-    <div class="esferas">
+    <div class="esferas reveal reveal-stagger">
       <div class="esfera"><div class="num">01</div><h3>Mente</h3><p>Clareza, foco e rotina mental para decidir melhor todos os dias.</p></div>
       <div class="esfera"><div class="num">02</div><h3>Dinheiro</h3><p>Organização financeira e primeiros passos para prosperar.</p></div>
       <div class="esfera"><div class="num">03</div><h3>Corpo</h3><p>Energia e disposição para sustentar o ritmo do desafio.</p></div>
@@ -419,7 +690,7 @@
     <p class="eyebrow-sec">Como funciona</p>
     <h2>60 dias, um caminho direto — sem enrolação</h2>
     <p class="lead">Aulas curtas, ferramentas prontas e um calendário de ações diárias. Você não precisa adivinhar o próximo passo: ele já está traçado.</p>
-    <ul class="lista-perfil">
+    <ul class="lista-perfil reveal reveal-stagger">
       <li><span class="check">✓</span> Está disposto a aplicar o desafio, não só assistir</li>
       <li><span class="check">✓</span> Quer decisões mais maduras no dia a dia</li>
       <li><span class="check">✓</span> Cansou de adiar o que sabe que precisa fazer</li>
@@ -435,7 +706,7 @@
   <div class="wrap">
     <p class="eyebrow-sec">Ao entrar hoje</p>
     <h2>Você ainda leva 2 bônus exclusivos</h2>
-    <div class="bonus-card">
+    <div class="bonus-card reveal">
       <div class="icone">💬</div>
       <div>
         <h3>Comunidade exclusiva de apoio</h3>
@@ -443,7 +714,7 @@
         <div class="preco"><s>R$ 147,00</s> por <b>R$ 0,00</b></div>
       </div>
     </div>
-    <div class="bonus-card">
+    <div class="bonus-card reveal">
       <div class="icone">📈</div>
       <div>
         <h3>Treinamento — Primeiros Passos com Dinheiro</h3>
@@ -454,12 +725,12 @@
   </div>
 </section>
 
-<section>
+<section id="provas">
   <div class="wrap">
     <p class="eyebrow-sec">Provas sociais</p>
     <h2>Quem entrou, está sentindo a diferença</h2>
     <p class="lead">Prints reais de conversas e resultados de quem já está dentro do desafio.</p>
-    <div class="prints-grid">
+    <div class="prints-grid reveal reveal-stagger">
       <div class="print-card"><img src="prints/68930.jpg" alt="Print de conversa: participante elogia o programa e os materiais recebidos"></div>
       <div class="print-card"><img src="prints/68946.jpg" alt="Print de conversa: participante relata mudança na vida financeira e espiritual da família"></div>
       <div class="print-card"><img src="prints/68928.jpg" alt="Print de conversa: participante advogada relata mudança de visão sobre o futuro"></div>
@@ -472,7 +743,7 @@
   <div class="wrap">
     <p class="eyebrow-sec">Sua vaga</p>
     <h2>Comece hoje o seu Desafio 60 Dias</h2>
-    <div class="card-preco">
+    <div class="card-preco reveal">
       <div class="valor-total">Valor total: <s>R$ 523,90</s></div>
       <p style="color:var(--texto-fraco); font-size:14px; margin-bottom:6px;">Mas só hoje o seu investimento é de</p>
       <div class="preco-final"><span>R$</span>39</div>
@@ -485,7 +756,7 @@
 
 <section>
   <div class="wrap">
-    <div class="garantia">
+    <div class="garantia reveal">
       <div class="selo-grande">🛡️</div>
       <div>
         <h3>Garantia incondicional de 7 dias</h3>
@@ -495,11 +766,11 @@
   </div>
 </section>
 
-<section>
+<section id="faq">
   <div class="wrap">
     <p class="eyebrow-sec">Dúvidas frequentes</p>
     <h2>Perguntas que a gente mais recebe</h2>
-    <div style="max-width:700px; margin:0 auto;">
+    <div style="max-width:700px; margin:0 auto;" class="reveal">
       <details class="faq-item">
         <summary>Terei suporte para tirar dúvidas?</summary>
         <p>Sim. Você tem acesso a um canal direto com a equipe, além do grupo exclusivo de participantes.</p>
@@ -526,8 +797,41 @@
 </section>
 
 <footer>
-  © 2026 Vira-Chave · Desafio 60 Dias. Todos os direitos reservados.
+  <div class="wrap">
+    <div class="selo-mini">✓</div>
+    <div class="marca-footer">Desafio 60 Dias</div>
+    <div class="contato-footer">+55 65 9647-0645</div>
+    <div class="copyright">© 2026 Desafio 60 Dias. Todos os direitos reservados.</div>
+  </div>
 </footer>
 
+<script>
+  (function(){
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  })();
+
+  (function(){
+    var barra = document.getElementById('barraProgresso');
+    function atualizar(){
+      var alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+      var progresso = alturaTotal > 0 ? (window.scrollY / alturaTotal) * 100 : 0;
+      barra.style.width = progresso + '%';
+    }
+    window.addEventListener('scroll', atualizar, { passive: true });
+    atualizar();
+  })();
+</script>
 </body>
 </html>
